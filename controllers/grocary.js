@@ -1,9 +1,17 @@
 var grocary = require('../models/grocary'); 
  
 // List of all grocarys 
-exports.grocary_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: grocary list'); 
+exports.grocary_list = async function(req, res) { 
+    try{ 
+        thegrocarys = await grocary.find(); 
+        res.send(thegrocarys); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
+ 
  
 // for a specific grocary. 
 exports.grocary_detail = function(req, res) { 
