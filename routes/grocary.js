@@ -21,3 +21,6 @@ module.exports = router;
 
 /* GET detail grocary page */ 
 router.get('/detail', grocary_controllers.grocary_view_one_Page); 
+
+/* GET create grocary page */ 
+router.get('/create', grocary_controllers.grocary_create_Page); 
