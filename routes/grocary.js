@@ -24,3 +24,9 @@ router.get('/detail', grocary_controllers.grocary_view_one_Page);
 
 /* GET create grocary page */ 
 router.get('/create', grocary_controllers.grocary_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', grocary_controllers.grocary_update_Page); 
+
+/* GET delete grocary page */ 
+router.get('/delete', grocary_controllers.grocary_delete_Page); 

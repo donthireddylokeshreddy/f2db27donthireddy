@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let grocaryid = toShow._id 
+    - let grocarytomatovalue = toShow.tomatovalue
+    - let grocaryonionvalue = toShow.onionvalue
+    - let grocarycapsicumvaluve = toShow.capsicumvaluve 
+    - let actionid = "/resource/grocary/" + grocaryid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary ID is: 
+        div #{grocaryid} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary tomatovalue is: 
+        div #{grocarytomatovalue} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary capsicumvaluve is: 
+        div #{grocarycapsicumvaluve} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary onionvalue is: 
+        div #{grocaryonionvalue} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the grocary collection 
+      window.location.href='/grocary' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'     
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/grocary' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 

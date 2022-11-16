@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let grocaryid = toShow._id 
+  - let grocarytomatovalue = toShow.grocarytomatovalue
+  - let grocaryonionvalue = toShow.onionvalue 
+  - let grocarycapsicumvaluve = toShow.capsicumvaluve 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{grocaryid} 
+  - let actionid = "/resource/grocary/" + grocaryid 
+  form(id='grocaryForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.grocaryAttr(for='grocarytomatovalue') grocary tomatovalue 
+        input#grocary_type(type='number', name='grocarytomatovalue', value= grocarytomatovalue ) 
+    div.form-group 
+        label.grocaryAttr(for='capsicumvaluve') grocary capsicumvaluve 
+        input#capsicumvaluve(type='number', name='capsicumvaluve', value= grocarycapsicumvaluve ) 
+    div.form-group 
+        label.grocaryAttr(for='onionvalue') grocary onionvalue 
+        input#onionvalue(type='number', name='onionvalue', value= grocaryonionvalue ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['grocaryForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.number() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
