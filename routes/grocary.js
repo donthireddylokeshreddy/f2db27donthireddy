@@ -18,3 +18,6 @@ router.get('/', grocary_controllers.grocary_view_all_Page ); -
 // GET request for one grocary. 
 router.get('/grocary/:id', grocary_controllers.grocary_detail); 
 module.exports = router; 
+
+/* GET detail grocary page */ 
+router.get('/detail', grocary_controllers.grocary_view_one_Page); 
