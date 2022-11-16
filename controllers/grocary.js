@@ -14,20 +14,53 @@ exports.grocary_list = async function(req, res) {
  
  
 // for a specific grocary. 
-exports.grocary_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: grocary detail: ' + req.params.id); 
+exports.grocary_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await grocary.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 
-// Handle grocary delete form on DELETE. 
-exports.grocary_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: grocary delete DELETE ' + req.params.id); 
+// Handle grocary delete on DELETE. 
+exports.grocary_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await grocary.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
 }; 
  
 // Handle grocary update form on PUT. 
-exports.grocary_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: grocary update PUT' + req.params.id); 
-};
+// Handle grocary update form on PUT. 
+exports.grocary_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await grocary.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.grocary_type)  
+               toUpdate.grocary_type = req.body.grocary_type; 
+        if(req.body.tomatovalue) toUpdate.tomatovalue = req.body.tomatovalue; 
+        if(req.body.onionvalue) toUpdate.onionvalue = req.body.onionvalue; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
+ 
 
 // VIEWS 
 // Handle a show all view 

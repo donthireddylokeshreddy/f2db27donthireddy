@@ -8,9 +8,13 @@
 
 // module.exports = router;
 var express = require('express'); 
-const grocary_controlers= require('../controllers/grocary'); 
+const grocary_controllers= require('../controllers/grocary'); 
 var router = express.Router(); 
  
 /* GET grocary */ 
-router.get('/', grocary_controlers.grocary_view_all_Page ); 
+router.get('/', grocary_controllers.grocary_view_all_Page ); -
+
+
+// GET request for one grocary. 
+router.get('/grocary/:id', grocary_controllers.grocary_detail); 
 module.exports = router; 
