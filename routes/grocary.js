@@ -46,5 +46,4 @@ router.get('/delete', grocary_controllers.grocary_delete_Page);
 /* GET update grocary page */ 
 router.get('/update', grocary_controllers.grocary_update_Page);
 
-/* GET update grocary page */ 
-router.get('/update',  grocary_controllers.grocary_update_Page); 
+
