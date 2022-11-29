@@ -38,12 +38,12 @@ router.get('/create', grocary_controllers.grocary_create_Page);
 
 /* GET create update page */ 
 router.get('/update',secured, grocary_controllers.grocary_update_Page); 
-
+h
 /* GET delete grocary page */ 
-router.get('/delete', grocary_controllers.grocary_delete_Page); 
+router.get('/delete',secured, grocary_controllers.grocary_delete_Page); 
 
 
 /* GET update grocary page */ 
-router.get('/update', grocary_controllers.grocary_update_Page);
+router.get('/update',secured, grocary_controllers.grocary_update_Page);
 
 
