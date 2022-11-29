@@ -2,21 +2,23 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let grocaryid = toShow._id 
-  - let tomatovalue = toShow.tomatovalue 
-  - let onionvalue = toShow.onionvalue 
-  - let capsicumvaluve = toShow.capsicumvaluve 
-  div 
-    div.row 
-      div(class='grocaryAttr mr-3') grocary ID is: 
-      div #{grocaryid} 
-    div.row 
-      div(class='grocaryAttr mr-3') grocary tomatovalue is: 
-      div #{tomatovalue} 
-    div.row 
-      div(class='grocaryAttr mr-3') grocary capsicumvaluve is: 
-      div #{capsicumvaluve} 
-    div.row 
-      div(class='grocaryAttr mr-3') grocary onionvalue is: 
-      div #{onionvalue} 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else  
+    - let grocaryid = toShow._id 
+    - let tomatovalue = toShow.tomatovalue 
+    - let onionvalue = toShow.onionvalue 
+    - let capsicumvaluve = toShow.capsicumvaluve 
+    div 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary ID is: 
+        div #{grocaryid} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary tomatovalue is: 
+        div #{tomatovalue} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary capsicumvaluve is: 
+        div #{capsicumvaluve} 
+      div.row 
+        div(class='grocaryAttr mr-3') grocary onionvalue is: 
+        div #{onionvalue} 

@@ -66,8 +66,8 @@ failed`);
 // Handle a show all view 
 exports.grocary_view_all_Page = async function(req, res) { 
     try{ 
-        thegrocary = await grocary.find(); 
-        res.render('grocary', { title: 'grocary Search Results', results: thegrocary }); 
+        result = await grocary.find(); 
+        res.render('grocary', { title: 'grocary Search Results', results: result }); 
     } 
     catch(err){ 
         res.status(500); 

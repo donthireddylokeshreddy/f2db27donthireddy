@@ -10,7 +10,8 @@
 var express = require('express'); 
 const grocary_controllers= require('../controllers/grocary'); 
 var router = express.Router(); 
- 
+
+
 /* GET grocary */ 
 router.get('/', grocary_controllers.grocary_view_all_Page ); -
 
@@ -30,3 +31,9 @@ router.get('/update', grocary_controllers.grocary_update_Page);
 
 /* GET delete grocary page */ 
 router.get('/delete', grocary_controllers.grocary_delete_Page); 
+
+/* GET update grocary page */ 
+router.get('/update', grocary_controllers.grocary_update_Page);
+
+/* GET update grocary page */ 
+router.get('/update', secured,grocary_controlers.grocary_update_Page); 
